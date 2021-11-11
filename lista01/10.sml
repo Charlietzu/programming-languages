@@ -1,4 +1,4 @@
-datatype SolarSystemPlanets = Mercurio | Venus | Terra | Marte | Jupiter | Saturno | Urano | Netuno;
+datatype Planeta = Mercurio | Venus | Terra | Marte | Jupiter | Saturno | Urano | Netuno;
 
 fun planetAge (ageMonths, planet) = 
     case planet of

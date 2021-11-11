@@ -8,4 +8,6 @@ c) No + dentro dos parênteses, caímos no terceiro caso (real * int -> int), ap
 no + fora dos parênteses, caímos no primeiro caso (int * real -> real).
 
 d) No + dentro dos parênteses, caímos no terceiro caso (real * int -> real), após isso, 
-no primeiro + da esquerda para direita, caímos no segundo caso (int * int -> int), no segundo + no primeiro caso (int * real -> real), e então, no terceiro +, caímos no último caso (real * real -> real).
+no primeiro + da esquerda para direita, caímos no segundo caso (int * int -> int), 
+no segundo + no primeiro caso (int * real -> real), e então, no terceiro +, 
+caímos no último caso (real * real -> real).
