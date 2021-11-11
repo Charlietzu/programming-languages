@@ -11,4 +11,4 @@ fun planetAge (ageMonths, planet) =
         | Urano => (ageMonths div 12) * 30681
         | Netuno => (ageMonths div 12) * 60190;
 
-planetAge(0, Jupiter);
+planetAge(24, Jupiter);
