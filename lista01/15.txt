@@ -1,0 +1,11 @@
+a) O erro devido ao fato de que o código acima não foi tratado para todos os casos de retorno, ou seja, 
+por mais que 1 < 2 é verdadeiro sempre, é necessário que a gente forneça o fluxo alternativo, 
+para caso a expressão avaliada seja falsa (por mais que observando a expressão isso não seja possível), 
+que viria usando a palavra reservada "else".
+
+b) O erro ocorre devido ao fato de que em SML não é possível utilizar o operador de multiplicação "*",
+com dois tipos diferentes, no exemplo fornecido, 1 é um int e 2.0 é um real.
+
+c) O erro ocorre devido ao fato de que quando declaramos esta função para um número qualquer n,
+acabamos incluindo o número 0 junto, portanto, o casamento de padrões já está realizado para caso o 0
+seja utilizado como parâmetro para a função fact(n).
