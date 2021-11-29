@@ -15,4 +15,5 @@ fun eval (IConst(value)) = value
     | eval (Gt(value1, value2))    = if (eval value1) > (eval value2) then 1 else 0;
 
 
-eval (Eq(IConst(8), IConst(8)));
+eval(Max(IConst(3), Plus(IConst(2), IConst(3))));
+eval(Div(Multi(IConst(5), IConst(4)), Minus(IConst(4), IConst(4))));
