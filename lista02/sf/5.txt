@@ -1,0 +1,18 @@
+- while ¬(x=1) do (y:=y*x; x:=x-1)
+
+Para determinar se este programa termina, é necessário saber qual o valor de x no estado inicial, ou seja, no estado s.
+Caso x seja menor do que 1, o programa nunca irá terminar, pois o valor de x irá ficar sempre cada vez menor devido ao
+comando x := x - 1 e a condição do while nunca será falsa, gerando um loop infinito. Caso x seja um valor, que em algum
+momento, quando passar pelo comando x := x - 1, resulte em x = 1, então neste caso o programa vai sempre terminar.
+
+- while 1 ≤ x do (y:=y*x; x:=x-1)
+
+Caso tenhamos um estado inicial s onde o valor x não seja maior do que 1, a condição do while vai ser falsa, portanto
+o programa irá terminar. Caso o valor de x seja maior ou igual a 1, os comandos dentro do while irão executar, e o 
+comando x := x - 1 irá fazer com que em algum momento o programa termine, pela condição do while ser falsa. Portanto,
+o programa sempre termina.
+
+- while true do skip
+
+Este programa nunca irá terminar, pois devido ao fato de que estamos sempre fazendo a condição do while ser verdadeira,
+o comando "skip" sempre será executado.
