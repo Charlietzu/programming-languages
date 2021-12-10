@@ -1,0 +1,24 @@
+a) Escopo da função g (linha 1) = bloco 1
+Escopo de let (linha 2) = bloco 2
+Escopo da função f (linha 4) = bloco 3
+Escopo da fução h (linha 5) = bloco 4
+Escopo de let (linha 6) = bloco 5
+
+b) g (linha 1)
+x (linha 1)
+inc (linha 3)
+f (linha 4)
+y (linha 4)
+h (linha 5)
+z (linha 5)
+inc (linha 7)
+
+c) Bloco 1: g, x
+Bloco 2: inc, f, h
+Bloco 3: y
+Bloco 4: z
+Bloco 5: inc
+
+d) O valor da saída do programa é 6, pois dentro de f o valor de inc procurado será o valor do escopo mais superior,
+que seria 1. No caso do escopo dinâmico, dentro de f, o valor de inc procurado seria o primeiro valor encontrado na
+pilha de chamadas, que seria o valor 2 dentro de h, que chama f, com isso, o valor da saída do programa seria 7.

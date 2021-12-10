@@ -1,0 +1,7 @@
+a) A saída do programa seria 1, pois, como o escopo é estático neste caso, dentro da função r, ao chamarmos a função q
+o programa iria procurar x no escopo da função, e então em um escopo global (que é o escopo de p), com isso, a variável
+x declarada dentro de r não seria afetada, se mantendo o valor de 1 atribuído.
+
+b) A saída do programa seria 2, pois, como desta vez o escopo é dinâmico, a função q chamada dentro de r, iria procurar
+o valor de x na pilha de chamadas, com isso, a função q iria encontrar o x declarado dentro do escopo de r (cujo o valor
+era 1) e incrementar em 1, resultando no valor 2.
