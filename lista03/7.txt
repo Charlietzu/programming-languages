@@ -1,0 +1,3 @@
+Não é a forma mais correta pois conforme são enviados listas maiores como argumentos para a 
+função bad_max, ela começa a ter uma perfomance ruim pois na linha 18 e na linha 20 há duas
+chamadas recursivas, o que faz com que a complexidade aumente exponencialmente.
