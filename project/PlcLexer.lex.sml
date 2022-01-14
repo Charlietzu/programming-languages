@@ -236,41 +236,41 @@ in Vector.fromList(List.map g
 {fin = [], trans = 3},
 {fin = [], trans = 3},
 {fin = [(N 72)], trans = 0},
-{fin = [(N 18),(N 72)], trans = 0},
-{fin = [(N 42),(N 72)], trans = 0},
-{fin = [(N 16),(N 72)], trans = 0},
-{fin = [(N 10),(N 72)], trans = 9},
-{fin = [(N 10)], trans = 9},
-{fin = [(N 22),(N 72)], trans = 0},
-{fin = [(N 20),(N 72)], trans = 0},
-{fin = [(N 44),(N 72)], trans = 13},
-{fin = [(N 28)], trans = 0},
-{fin = [(N 57),(N 72)], trans = 15},
-{fin = [(N 60)], trans = 0},
-{fin = [(N 32),(N 72)], trans = 0},
-{fin = [(N 62),(N 72)], trans = 18},
-{fin = [(N 35)], trans = 0},
-{fin = [(N 4),(N 72)], trans = 20},
-{fin = [(N 4)], trans = 20},
-{fin = [(N 55),(N 72)], trans = 0},
-{fin = [(N 51),(N 72)], trans = 23},
-{fin = [(N 25)], trans = 0},
+{fin = [(N 26),(N 72)], trans = 0},
+{fin = [(N 50),(N 72)], trans = 0},
+{fin = [(N 24),(N 72)], trans = 0},
+{fin = [(N 18),(N 72)], trans = 9},
+{fin = [(N 18)], trans = 9},
 {fin = [(N 30),(N 72)], trans = 0},
-{fin = [(N 49),(N 72)], trans = 0},
-{fin = [(N 53),(N 72)], trans = 0},
-{fin = [(N 14),(N 72)], trans = 0},
-{fin = [(N 12),(N 72)], trans = 29},
-{fin = [(N 65)], trans = 0},
+{fin = [(N 28),(N 72)], trans = 0},
+{fin = [(N 52),(N 72)], trans = 13},
+{fin = [(N 36)], trans = 0},
+{fin = [(N 65),(N 72)], trans = 15},
+{fin = [(N 68)], trans = 0},
+{fin = [(N 40),(N 72)], trans = 0},
+{fin = [(N 70),(N 72)], trans = 18},
+{fin = [(N 43)], trans = 0},
+{fin = [(N 15),(N 72)], trans = 20},
+{fin = [(N 15)], trans = 20},
+{fin = [(N 63),(N 72)], trans = 0},
+{fin = [(N 59),(N 72)], trans = 23},
+{fin = [(N 33)], trans = 0},
+{fin = [(N 38),(N 72)], trans = 0},
+{fin = [(N 57),(N 72)], trans = 0},
+{fin = [(N 61),(N 72)], trans = 0},
+{fin = [(N 22),(N 72)], trans = 0},
+{fin = [(N 20),(N 72)], trans = 29},
+{fin = [(N 4)], trans = 0},
 {fin = [(N 72)], trans = 31},
-{fin = [(N 40)], trans = 0},
-{fin = [(N 37),(N 72)], trans = 33},
-{fin = [(N 47)], trans = 0},
-{fin = [(N 7),(N 72)], trans = 35},
-{fin = [(N 7)], trans = 35},
+{fin = [(N 48)], trans = 0},
+{fin = [(N 45),(N 72)], trans = 33},
+{fin = [(N 55)], trans = 0},
+{fin = [(N 12),(N 72)], trans = 35},
+{fin = [(N 12)], trans = 35},
 {fin = [(N 1)], trans = 0},
-{fin = [(N 70)], trans = 0},
-{fin = [(N 70)], trans = 39},
-{fin = [(N 68)], trans = 0}])
+{fin = [(N 9)], trans = 0},
+{fin = [(N 9)], trans = 39},
+{fin = [(N 7)], trans = 0}])
 end
 structure StartStates =
 	struct
@@ -278,7 +278,7 @@ structure StartStates =
 
 (* start state definitions *)
 
-val COMENTARIO = STARTSTATE 3;
+val COMMENTARY = STARTSTATE 3;
 val INITIAL = STARTSTATE 1;
 
 end
@@ -314,37 +314,37 @@ let fun continue() = lex() in
 			(* Application actions *)
 
   1 => (lineNumber := !lineNumber + 1; lex())
-| 10 => let val yytext=yymktext() in obterPalavraReservada(yytext, yypos, yypos) end
-| 12 => (PARENTESESESQUERDO(yypos, yypos))
-| 14 => (PARENTESESDIREITO(yypos, yypos))
-| 16 => (CHAVEESQUERDA(yypos, yypos))
-| 18 => (CHAVEDIREITA(yypos, yypos))
-| 20 => (COLCHETEESQUERDO(yypos, yypos))
-| 22 => (COLCHETEDIREITO(yypos, yypos))
-| 25 => (SETA(yypos, yypos))
-| 28 => (SETADUPLA(yypos, yypos))
-| 30 => (VIRGULA(yypos, yypos))
-| 32 => (PONTOEVIRGULA(yypos, yypos))
-| 35 => (ADICIONAELEMENTOLISTA(yypos, yypos))
-| 37 => (NEGACAO(yypos, yypos))
-| 4 => let val yytext=yymktext() in CINT(converterStringParaInteiro(yytext), yypos, yypos) end
-| 40 => (E(yypos, yypos))
-| 42 => (BARRA(yypos, yypos))
-| 44 => (IGUAL(yypos, yypos))
-| 47 => (DIFERENTE(yypos, yypos))
-| 49 => (SOMA(yypos, yypos))
-| 51 => (SUBTRACAO(yypos, yypos))
-| 53 => (MULTIPLICACAO(yypos, yypos))
-| 55 => (DIVISAO(yypos, yypos))
-| 57 => (MENOR(yypos, yypos))
-| 60 => (MENOROUIGUAL(yypos, yypos))
-| 62 => (DOISPONTOS(yypos, yypos))
-| 65 => (YYBEGIN COMENTARIO; lex())
-| 68 => (YYBEGIN INITIAL; lex())
-| 7 => (lex())
-| 70 => (lex())
+| 12 => (lex())
+| 15 => let val yytext=yymktext() in CINT(converterStringParaInteiro(yytext), yypos, yypos) end
+| 18 => let val yytext=yymktext() in obterPalavraReservada(yytext, yypos, yypos) end
+| 20 => (PARENTESESESQUERDO(yypos, yypos))
+| 22 => (PARENTESESDIREITO(yypos, yypos))
+| 24 => (CHAVEESQUERDA(yypos, yypos))
+| 26 => (CHAVEDIREITA(yypos, yypos))
+| 28 => (COLCHETEESQUERDO(yypos, yypos))
+| 30 => (COLCHETEDIREITO(yypos, yypos))
+| 33 => (SETA(yypos, yypos))
+| 36 => (SETADUPLA(yypos, yypos))
+| 38 => (VIRGULA(yypos, yypos))
+| 4 => (YYBEGIN COMMENTARY; lex())
+| 40 => (PONTOEVIRGULA(yypos, yypos))
+| 43 => (ADICIONAELEMENTOLISTA(yypos, yypos))
+| 45 => (NEGACAO(yypos, yypos))
+| 48 => (E(yypos, yypos))
+| 50 => (BARRA(yypos, yypos))
+| 52 => (IGUAL(yypos, yypos))
+| 55 => (DIFERENTE(yypos, yypos))
+| 57 => (SOMA(yypos, yypos))
+| 59 => (SUBTRACAO(yypos, yypos))
+| 61 => (MULTIPLICACAO(yypos, yypos))
+| 63 => (DIVISAO(yypos, yypos))
+| 65 => (MENOR(yypos, yypos))
+| 68 => (MENOROUIGUAL(yypos, yypos))
+| 7 => (YYBEGIN INITIAL; lex())
+| 70 => (DOISPONTOS(yypos, yypos))
 | 72 => let val yytext=yymktext() in error("\n***Erro no lexer***\n");
                 raise Fail("Erro no lexer" ^yytext) end
+| 9 => (lex())
 | _ => raise Internal.LexerError
 
 		) end )
