@@ -838,7 +838,7 @@ end
 |  ( 37, ( ( _, ( MlyValue.CINT CINT1, CINT1left, CINT1right)) :: 
 rest671)) => let val  result = MlyValue.Const (fn _ => let val  (CINT
  as CINT1) = CINT1 ()
- in (ConI(CINT))
+ in (ConI CINT)
 end)
  in ( LrTable.NT 5, ( result, CINT1left, CINT1right), rest671)
 end
@@ -954,7 +954,7 @@ end
 MlyValue.Types Types1, _, _)) :: ( _, ( _, PARENTESESESQUERDO1left, _)
 ) :: rest671)) => let val  result = MlyValue.Type (fn _ => let val  (
 Types as Types1) = Types1 ()
- in (ListT(Types))
+ in (ListT Types)
 end)
  in ( LrTable.NT 12, ( result, PARENTESESESQUERDO1left, 
 PARENTESESDIREITO1right), rest671)
@@ -963,7 +963,7 @@ end
 MlyValue.Type Type1, _, _)) :: ( _, ( _, COLCHETEESQUERDO1left, _)) ::
  rest671)) => let val  result = MlyValue.Type (fn _ => let val  (Type
  as Type1) = Type1 ()
- in (SeqT(Type))
+ in (SeqT Type)
 end)
  in ( LrTable.NT 12, ( result, COLCHETEESQUERDO1left, 
 COLCHETEDIREITO1right), rest671)

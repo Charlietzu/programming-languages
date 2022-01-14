@@ -23,21 +23,23 @@
     | EOF
 
 
-%nonterm Prog of expr
-        | Decl of expr
-        | Expr of expr
-        | AtomExpr of expr
-        | AppExpr of expr
-        | Const of expr
-        | Comps of expr list
-        | MatchExpr of (expr option * expr) list
-        | CondExpr of expr option
-        | Args of (plcType * string) list
-        | Params of (plcType * string) list
-        | TypedVar of plcType * string
-        | Type of plcType
-        | AtomType of plcType
-        | Types of plcType list
+%nonterm Prog of expr 
+    | Decl of expr
+    | Expr of expr
+    | AtomExpr of expr
+    | AppExpr of expr
+    | Const of expr
+    | Comps of expr list
+    | MatchExpr of (expr option * expr) list 
+    | CondExpr of expr option
+    | Args of (plcType * string) list
+    | Params of (plcType * string) list
+    | TypedVar of plcType * string
+    | Type of plcType
+    | AtomType of plcType
+    | Types of plcType list
+
+%eop EOF
 
 %right PONTOEVIRGULA SETA
 %nonassoc IF
@@ -48,10 +50,9 @@
 %right ADICIONAELEMENTOLISTA
 %left SOMA SUBTRACAO
 %left MULTIPLICACAO DIVISAO
-%nonassoc NEGACAO HD TL ISE PRINT
+%nonassoc NEGACAO HD TL ISE PRINT NOME
 %left COLCHETEESQUERDO
 
-%eop EOF
 
 %noshift EOF
 
@@ -100,7 +101,7 @@ AppExpr: AtomExpr AtomExpr (Call(AtomExpr1, AtomExpr2))
        | AppExpr AtomExpr (Call(AppExpr, AtomExpr))
 
 Const: TRUE (ConB true) | FALSE (ConB false)
-     | CINT (ConI(CINT))
+     | CINT (ConI CINT)
      | PARENTESESESQUERDO PARENTESESDIREITO (List [])
      | PARENTESESESQUERDO Type COLCHETEESQUERDO COLCHETEDIREITO PARENTESESDIREITO (ESeq(Type))
 
@@ -122,8 +123,8 @@ Params: TypedVar (TypedVar :: [])
 TypedVar: Type NOME ((Type, NOME))
 
 Type: AtomType (AtomType)
-    | PARENTESESESQUERDO Types PARENTESESDIREITO (ListT(Types))
-    | COLCHETEESQUERDO Type COLCHETEDIREITO (SeqT(Type))
+    | PARENTESESESQUERDO Types PARENTESESDIREITO (ListT Types)
+    | COLCHETEESQUERDO Type COLCHETEDIREITO (SeqT Type)
     | Type SETA Type (FunT (Type1, Type2))
 
 AtomType: LISTA (ListT [])
