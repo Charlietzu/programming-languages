@@ -20,26 +20,26 @@ fun converterStringParaInteiro s =
 fun obterPalavraReservada (palavra, esquerda, direita) =
     case palavra of 
         "var" => VARIAVEL (esquerda, direita)
-        | _   => NOME (palavra, esquerda, direita)
-        | "print" => PRINT (esquerda, direita)
-        | "if" => IF (esquerda, direita)
+        | "Bool" => BOOLEANO (esquerda, direita)
         | "else" => ELSE (esquerda, direita)
-        | "ise" => ISE (esquerda, direita)
-        | "then" => THEN (esquerda, direita)
         | "end" => END (esquerda, direita)
+        | "false" => FALSE (esquerda, direita)
         | "fn" => FUNCAOANONIMA (esquerda, direita)
         | "fun" => FUNCAONORMAL (esquerda, direita)
         | "hd" => HD (esquerda, direita)
+        | "if" => IF (esquerda, direita)
         | "Int" => INTEIRO (esquerda, direita)
-        | "Nil" => LISTA (esquerda, direita)
+        | "ise" => ISE (esquerda, direita)
         | "match" => MATCH (esquerda, direita)
-        | "rec" => REC (esquerda, direita)
+        | "Nil" => LISTA (esquerda, direita)
+        | "print" => PRINT (esquerda, direita)
+        | "rec" => RECURSIVIDADE (esquerda, direita)
+        | "then" => THEN (esquerda, direita)
         | "tl" => TL (esquerda, direita)
-        | "Bool" => BOOLEANO (esquerda, direita)
         | "true" => TRUE (esquerda, direita)
-        | "false" => FALSE (esquerda, direita)
         | "with" => WITH (esquerda, direita)
         | "_" => UNDERSCORE (esquerda, direita)
+        | _   => NOME (palavra, esquerda, direita)
 
 (* Get the current line being read. *)
 fun getLineAsString() =
@@ -104,8 +104,8 @@ espaco = [\ \t];
 
 <INITIAL>":" => (DOISPONTOS(yypos, yypos));
 
-<INITIAL>"(*" => (COMENTARIO; lex());
-<COMENTARIO>"*)" => (COMENTARIODIREITA; lex());
+<INITIAL>"(*" => (YYBEGIN COMENTARIO; lex());
+<COMENTARIO>"*)" => (YYBEGIN INITIAL; lex());
 <COMENTARIO>. => (lex());
 <INITIAL>. => (error("\n***Erro no lexer***\n");
                 raise Fail("Erro no lexer" ^yytext));

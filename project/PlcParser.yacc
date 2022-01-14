@@ -4,26 +4,24 @@
 
 %pos int
 
-%term VARIAVEL
-    | FUNCAONORMAL | REC | DOIS_PONTOS
-    | IF | THEN | ELSE
-    | MATCH | WITH
-    | NOT
-    | HD | TL | ISE
-    | PRINT
-    | E
-    | SOMA | SUBTRACAO | MULTIPLICACAO | DIVISAO | IGUAL | DIFERENTE | MENOR | MENOROUIGUAL
-    | ANONF | SETADUPLA | END
-    | TRUE | FALSE
-    | ADICIONA_ELEMENTO_LISTA
-    | PONTO_E_VIRGULA
-    | VIRGULA
-    | COLCHETEESQUERDO | COLCHETEDIREITO | PARENTESESESQUERDO | PARENTESESDIREITO | CHAVEESQUERDA | CHAVEDIREITA
-    | BARRA | SETA
-    | UNDERSCORE
-    | NIL | BOOL | INT
+%term VARIAVEL | BOOLEANO | ELSE | END
+    | FALSE | FUNCAOANONIMA | FUNCAONORMAL
+    | HD | IF | INTEIRO
+    | ISE | MATCH | LISTA
+    | PRINT | RECURSIVIDADE | THEN
+    | TL | TRUE | WITH
+    | UNDERSCORE | PARENTESESESQUERDO
+    | PARENTESESDIREITO | CHAVEESQUERDA | CHAVEDIREITA
+    | COLCHETEESQUERDO | COLCHETEDIREITO | SETA
+    | SETADUPLA | VIRGULA | PONTOEVIRGULA
+    | ADICIONAELEMENTOLISTA | NEGACAO | E
+    | BARRA | IGUAL | DIFERENTE
+    | SOMA | SUBTRACAO | MULTIPLICACAO 
+    | DIVISAO | MENOR | MENOROUIGUAL
+    | DOISPONTOS
     | NOME of string | CINT of int
     | EOF
+
 
 %nonterm Prog of expr
         | Decl of expr
@@ -45,12 +43,12 @@
 %nonassoc IF
 %left ELSE
 %left E
-%left IGUAL NEGACAO
+%left IGUAL DIFERENTE
 %left MENOR MENOROUIGUAL
 %right ADICIONAELEMENTOLISTA
 %left SOMA SUBTRACAO
 %left MULTIPLICACAO DIVISAO
-%nonassoc NOT HD TL ISE PRINT
+%nonassoc NEGACAO HD TL ISE PRINT
 %left COLCHETEESQUERDO
 
 %eop EOF
@@ -66,13 +64,13 @@ Prog: Expr (Expr)
 
 Decl: VARIAVEL NOME IGUAL Expr PONTOEVIRGULA Prog (Let(NOME, Expr, Prog))
     | FUNCAONORMAL NOME Args IGUAL Expr PONTOEVIRGULA Prog (Let(NOME, makeAnon(Args, Expr), Prog))
-    | FUNCAONORMAL REC NOME Args DOISPONTOS Type IGUAL Expr PONTOEVIRGULA Prog (makeFun(NOME, Args, Type, Expr, Prog))
+    | FUNCAONORMAL RECURSIVIDADE NOME Args DOISPONTOS Type IGUAL Expr PONTOEVIRGULA Prog (makeFun(NOME, Args, Type, Expr, Prog))
 
 Expr: AtomExpr(AtomExpr)
     | AppExpr(AppExpr)
     | IF Expr THEN Expr ELSE Expr (If(Expr1, Expr2, Expr3))
     | MATCH Expr WITH MatchExpr (Match(Expr, MatchExpr))
-    | NOT Expr (Prim1("!", Expr))
+    | NEGACAO Expr (Prim1("!", Expr))
     | Expr E Expr (Prim2("&&", Expr1, Expr2))
     | HD Expr (Prim1("hd", Expr))
     | TL Expr (Prim1("tl", Expr))
@@ -84,7 +82,7 @@ Expr: AtomExpr(AtomExpr)
     | Expr DIVISAO Expr (Prim2("/", Expr1, Expr2))
     | SUBTRACAO Expr (Prim1("-", Expr))
     | Expr IGUAL Expr (Prim2("=", Expr1, Expr2))
-    | Expr NEGACAO Expr (Prim2("!=", Expr1, Expr2))
+    | Expr DIFERENTE Expr (Prim2("!=", Expr1, Expr2))
     | Expr MENOR Expr (Prim2("<", Expr1, Expr2))
     | Expr MENOROUIGUAL Expr (Prim2("<=", Expr1, Expr2))
     | Expr ADICIONAELEMENTOLISTA Expr (Prim2("::", Expr1, Expr2))
@@ -96,7 +94,7 @@ AtomExpr: Const (Const)
         | CHAVEESQUERDA Prog CHAVEDIREITA (Prog)
         | PARENTESESESQUERDO Comps PARENTESESDIREITO (List(Comps))
         | PARENTESESESQUERDO Expr PARENTESESDIREITO (Expr)
-        | ANONF Args SETADUPLA Expr END (makeAnon(Args, Expr))
+        | FUNCAOANONIMA Args SETADUPLA Expr END (makeAnon(Args, Expr))
 
 AppExpr: AtomExpr AtomExpr (Call(AtomExpr1, AtomExpr2))
        | AppExpr AtomExpr (Call(AppExpr, AtomExpr))
@@ -128,9 +126,9 @@ Type: AtomType (AtomType)
     | COLCHETEESQUERDO Type COLCHETEDIREITO (SeqT(Type))
     | Type SETA Type (FunT (Type1, Type2))
 
-AtomType: NIL (ListT [])
-        | BOOL (BoolT)
-        | INT (IntT)
+AtomType: LISTA (ListT [])
+        | BOOLEANO (BoolT)
+        | INTEIRO (IntT)
         | PARENTESESESQUERDO Type PARENTESESDIREITO (Type)
 
 Types: Type VIRGULA Type (Type1::Type2::[])

@@ -35,3 +35,9 @@ use "testParserCases.sml"
 
 (* Try to add a systematic way of using the test cases in
    testParserCases to stress test your parser *)
+
+   fun executarTestesUnidade ([], cenario) = "Teste aprovado para este caso!"
+  | executarTestesUnidade ((x:string,y:expr)::t, cenario) = if (fromString(x) = y) then executarTestesUnidade(t, x) else x;
+
+executarTestesUnidade(casos, "");
+fromString(executarTestesUnidade(casos,""));
