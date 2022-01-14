@@ -1,3 +1,6 @@
+(* Removemos a importação do arquivo Absyn.sml, pois isto estava gerando erro nos testes*)
+
+
 val cases =
   (
     let val s = "0";

@@ -16,11 +16,6 @@ type lexresult = (slvalue, pos)token
 val error = fn x => TextIO.output(TextIO.stdOut, x ^ "\n")
 val lineNumber = ref 0
 
-fun converterStringParaInteiro s =
-    case Int.fromString s of
-    SOME i => i
-    |  NONE => raise Fail ("Nao foi possivel converter de string para int")
-
 (* Get the current line being read. *)
 fun getLineAsString() =
     let
@@ -32,26 +27,32 @@ fun getLineAsString() =
 fun obterPalavraReservada (palavra, esquerda, direita) =
     case palavra of 
         "var" => VARIAVEL (esquerda, direita)
-        | "end" => END (esquerda, direita)
         | "fn" => FUNCAOANONIMA (esquerda, direita)
         | "rec" => RECURSIVIDADE (esquerda, direita)
-        | "if" => IF (esquerda, direita)
-        | "then" => THEN (esquerda, direita)
-        | "else" => ELSE (esquerda, direita)
-        | "match" => MATCH (esquerda, direita)
-        | "with" => WITH (esquerda, direita)
         | "hd" => HD (esquerda, direita)
         | "tl" => TL (esquerda, direita)
         | "ise" => ISE (esquerda, direita)
+        | "Nil" => LISTA (esquerda, direita)
+        | "with" => WITH (esquerda, direita)
+        | "if" => IF (esquerda, direita)
+        | "else" => ELSE (esquerda, direita)
+        | "end" => END (esquerda, direita)
+        | "then" => THEN (esquerda, direita)
         | "print" => PRINT (esquerda, direita)
         | "_" => UNDERSCORE (esquerda, direita)
-        | "Nil" => LISTA (esquerda, direita)
-        | "Int" => INTEIRO (esquerda, direita)
         | "Bool" => BOOLEANO (esquerda, direita)
+        | "match" => MATCH (esquerda, direita)
         | "true" => TRUE (esquerda, direita)
         | "false" => FALSE (esquerda, direita)
         | "fun" => FUNCAONORMAL (esquerda, direita)
+        | "Int" => INTEIRO (esquerda, direita)
         | _ => NOME (palavra, esquerda, direita)
+
+
+fun converterStringParaInteiro s =
+    case Int.fromString s of
+    SOME i => i
+    |  NONE => raise Fail ("Nao foi possivel converter de string para int")
 
 (* Define what to do when the end of the file is reached. *)
 fun eof () = Tokens.EOF(0,0)
@@ -236,41 +237,41 @@ in Vector.fromList(List.map g
 {fin = [], trans = 3},
 {fin = [], trans = 3},
 {fin = [(N 72)], trans = 0},
-{fin = [(N 66),(N 72)], trans = 0},
-{fin = [(N 55),(N 72)], trans = 0},
-{fin = [(N 64),(N 72)], trans = 0},
-{fin = [(N 18),(N 72)], trans = 9},
-{fin = [(N 18)], trans = 9},
-{fin = [(N 70),(N 72)], trans = 0},
-{fin = [(N 68),(N 72)], trans = 0},
-{fin = [(N 33),(N 72)], trans = 13},
-{fin = [(N 58)], trans = 0},
-{fin = [(N 38),(N 72)], trans = 15},
-{fin = [(N 41)], trans = 0},
-{fin = [(N 48),(N 72)], trans = 0},
-{fin = [(N 46),(N 72)], trans = 18},
-{fin = [(N 44)], trans = 0},
-{fin = [(N 15),(N 72)], trans = 20},
-{fin = [(N 15)], trans = 20},
-{fin = [(N 31),(N 72)], trans = 0},
-{fin = [(N 27),(N 72)], trans = 23},
-{fin = [(N 53)], trans = 0},
-{fin = [(N 50),(N 72)], trans = 0},
-{fin = [(N 25),(N 72)], trans = 0},
-{fin = [(N 29),(N 72)], trans = 0},
+{fin = [(N 58),(N 72)], trans = 0},
+{fin = [(N 28),(N 72)], trans = 0},
+{fin = [(N 56),(N 72)], trans = 0},
+{fin = [(N 10),(N 72)], trans = 9},
+{fin = [(N 10)], trans = 9},
 {fin = [(N 62),(N 72)], trans = 0},
-{fin = [(N 60),(N 72)], trans = 29},
-{fin = [(N 4)], trans = 0},
+{fin = [(N 60),(N 72)], trans = 0},
+{fin = [(N 23),(N 72)], trans = 13},
+{fin = [(N 50)], trans = 0},
+{fin = [(N 30),(N 72)], trans = 15},
+{fin = [(N 33)], trans = 0},
+{fin = [(N 37),(N 72)], trans = 0},
+{fin = [(N 35),(N 72)], trans = 18},
+{fin = [(N 42)], trans = 0},
+{fin = [(N 7),(N 72)], trans = 20},
+{fin = [(N 7)], trans = 20},
+{fin = [(N 21),(N 72)], trans = 0},
+{fin = [(N 17),(N 72)], trans = 23},
+{fin = [(N 47)], trans = 0},
+{fin = [(N 39),(N 72)], trans = 0},
+{fin = [(N 15),(N 72)], trans = 0},
+{fin = [(N 19),(N 72)], trans = 0},
+{fin = [(N 54),(N 72)], trans = 0},
+{fin = [(N 52),(N 72)], trans = 29},
+{fin = [(N 65)], trans = 0},
 {fin = [(N 72)], trans = 31},
-{fin = [(N 23)], trans = 0},
-{fin = [(N 20),(N 72)], trans = 33},
-{fin = [(N 36)], trans = 0},
-{fin = [(N 12),(N 72)], trans = 35},
-{fin = [(N 12)], trans = 35},
+{fin = [(N 13)], trans = 0},
+{fin = [(N 44),(N 72)], trans = 33},
+{fin = [(N 26)], trans = 0},
+{fin = [(N 4),(N 72)], trans = 35},
+{fin = [(N 4)], trans = 35},
 {fin = [(N 1)], trans = 0},
-{fin = [(N 9)], trans = 0},
-{fin = [(N 9)], trans = 39},
-{fin = [(N 7)], trans = 0}])
+{fin = [(N 70)], trans = 0},
+{fin = [(N 70)], trans = 39},
+{fin = [(N 68)], trans = 0}])
 end
 structure StartStates =
 	struct
@@ -278,7 +279,7 @@ structure StartStates =
 
 (* start state definitions *)
 
-val COMMENTARY = STARTSTATE 3;
+val COMENTARIO = STARTSTATE 3;
 val INITIAL = STARTSTATE 1;
 
 end
@@ -314,37 +315,37 @@ let fun continue() = lex() in
 			(* Application actions *)
 
   1 => (lineNumber := !lineNumber + 1; lex())
-| 12 => (lex())
-| 15 => let val yytext=yymktext() in CINT(converterStringParaInteiro(yytext), yypos, yypos) end
-| 18 => let val yytext=yymktext() in obterPalavraReservada(yytext, yypos, yypos) end
-| 20 => (NEGACAO(yypos, yypos))
-| 23 => (E(yypos, yypos))
-| 25 => (SOMA(yypos, yypos))
-| 27 => (SUBTRACAO(yypos, yypos))
-| 29 => (MULTIPLICACAO(yypos, yypos))
-| 31 => (DIVISAO(yypos, yypos))
-| 33 => (IGUAL(yypos, yypos))
-| 36 => (DIFERENTE(yypos, yypos))
-| 38 => (MENOR(yypos, yypos))
-| 4 => (YYBEGIN COMMENTARY; lex())
-| 41 => (MENOROUIGUAL(yypos, yypos))
-| 44 => (ADICIONAELEMENTOLISTA(yypos, yypos))
-| 46 => (DOISPONTOS(yypos, yypos))
-| 48 => (PONTOEVIRGULA(yypos, yypos))
-| 50 => (VIRGULA(yypos, yypos))
-| 53 => (SETA(yypos, yypos))
-| 55 => (BARRA(yypos, yypos))
-| 58 => (SETADUPLA(yypos, yypos))
-| 60 => (PARENTESESESQUERDO(yypos, yypos))
-| 62 => (PARENTESESDIREITO(yypos, yypos))
-| 64 => (CHAVEESQUERDA(yypos, yypos))
-| 66 => (CHAVEDIREITA(yypos, yypos))
-| 68 => (COLCHETEESQUERDO(yypos, yypos))
-| 7 => (YYBEGIN INITIAL; lex())
-| 70 => (COLCHETEDIREITO(yypos, yypos))
+| 10 => let val yytext=yymktext() in obterPalavraReservada(yytext, yypos, yypos) end
+| 13 => (E(yypos, yypos))
+| 15 => (SOMA(yypos, yypos))
+| 17 => (SUBTRACAO(yypos, yypos))
+| 19 => (MULTIPLICACAO(yypos, yypos))
+| 21 => (DIVISAO(yypos, yypos))
+| 23 => (IGUAL(yypos, yypos))
+| 26 => (DIFERENTE(yypos, yypos))
+| 28 => (BARRA(yypos, yypos))
+| 30 => (MENOR(yypos, yypos))
+| 33 => (MENOROUIGUAL(yypos, yypos))
+| 35 => (DOISPONTOS(yypos, yypos))
+| 37 => (PONTOEVIRGULA(yypos, yypos))
+| 39 => (VIRGULA(yypos, yypos))
+| 4 => (lex())
+| 42 => (ADICIONAELEMENTOLISTA(yypos, yypos))
+| 44 => (NEGACAO(yypos, yypos))
+| 47 => (SETA(yypos, yypos))
+| 50 => (SETADUPLA(yypos, yypos))
+| 52 => (PARENTESESESQUERDO(yypos, yypos))
+| 54 => (PARENTESESDIREITO(yypos, yypos))
+| 56 => (CHAVEESQUERDA(yypos, yypos))
+| 58 => (CHAVEDIREITA(yypos, yypos))
+| 60 => (COLCHETEESQUERDO(yypos, yypos))
+| 62 => (COLCHETEDIREITO(yypos, yypos))
+| 65 => (YYBEGIN COMENTARIO; lex())
+| 68 => (YYBEGIN INITIAL; lex())
+| 7 => let val yytext=yymktext() in CINT(converterStringParaInteiro(yytext), yypos, yypos) end
+| 70 => (lex())
 | 72 => let val yytext=yymktext() in error("\n***Erro no lexer***\n");
                 raise Fail("Erro no lexer" ^yytext) end
-| 9 => (lex())
 | _ => raise Internal.LexerError
 
 		) end )
