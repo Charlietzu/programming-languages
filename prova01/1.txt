@@ -1,0 +1,11 @@
+a) Falso
+
+b) Falso, pois a semântica nos fornece artifícios para verificação de se a sentença de um código possui um significado válido ou não, não levando em conta a gramática da linguagem.
+
+c) Falso
+
+d) Falso, pois o escopo dinâmico não depende da forma como o código está escrito, e sim como ele é executado, portanto, a análise se torna complexa conforme variáveis podem ser redefinidas em tempo de execução sem que você espere (caso não conheça bem a rotina de execução).
+
+e) Verdadeiro, pois para ser definida como uma função de ordem superior, ela deve ou retornar uma função, ou receber uma ou mais funções como argumentos.
+
+f) Verdadeiro, 
