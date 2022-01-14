@@ -18,6 +18,10 @@ Control.Print.stringDepth := 1000;
 
 open PlcFrontEnd;
 
+fun compare ([], []) = true
+  | compare (x::xs, y::ys) = (x = y) andalso compare(xs,ys)
+  |   compare (_,_) = false;
+
 fromString "15";
 fromString "true";
 fromString "()";
@@ -31,12 +35,12 @@ fromString "fun f(Int x) = x; f(1)";
 fromString "match x with | 0 -> 1| _ -> -1 end";
 fromFile ("example.plc");
 
-use "testParserCases.sml"
+use "testParserCases.sml";
 
 (* Try to add a systematic way of using the test cases in
    testParserCases to stress test your parser *)
 
-   fun executarTestesUnidade ([], cenario) = "Testes aprovados"
+fun executarTestesUnidade ([], cenario) = "Testes aprovados"
   | executarTestesUnidade ((x:string,y:expr)::t, cenario) = if (fromString(x) = y) then executarTestesUnidade(t, x) else x;
 
-executarTestesUnidade(casos, "");
+executarTestesUnidade(cases, "");

@@ -21,6 +21,14 @@ fun converterStringParaInteiro s =
     SOME i => i
     |  NONE => raise Fail ("Nao foi possivel converter de string para int")
 
+(* Get the current line being read. *)
+fun getLineAsString() =
+    let
+        val lineNum = !lineNumber
+    in
+        Int.toString lineNum
+    end
+
 fun obterPalavraReservada (palavra, esquerda, direita) =
     case palavra of 
         "var" => VARIAVEL (esquerda, direita)
@@ -43,15 +51,7 @@ fun obterPalavraReservada (palavra, esquerda, direita) =
         | "true" => TRUE (esquerda, direita)
         | "false" => FALSE (esquerda, direita)
         | "fun" => FUNCAONORMAL (esquerda, direita)
-        | _   => NOME (palavra, esquerda, direita)
-
-(* Get the current line being read. *)
-fun getLineAsString() =
-    let
-        val lineNum = !lineNumber
-    in
-        Int.toString lineNum
-    end
+        | _ => NOME (palavra, esquerda, direita)
 
 (* Define what to do when the end of the file is reached. *)
 fun eof () = Tokens.EOF(0,0)
@@ -236,35 +236,35 @@ in Vector.fromList(List.map g
 {fin = [], trans = 3},
 {fin = [], trans = 3},
 {fin = [(N 72)], trans = 0},
-{fin = [(N 26),(N 72)], trans = 0},
-{fin = [(N 50),(N 72)], trans = 0},
-{fin = [(N 24),(N 72)], trans = 0},
+{fin = [(N 66),(N 72)], trans = 0},
+{fin = [(N 55),(N 72)], trans = 0},
+{fin = [(N 64),(N 72)], trans = 0},
 {fin = [(N 18),(N 72)], trans = 9},
 {fin = [(N 18)], trans = 9},
-{fin = [(N 30),(N 72)], trans = 0},
-{fin = [(N 28),(N 72)], trans = 0},
-{fin = [(N 52),(N 72)], trans = 13},
-{fin = [(N 36)], trans = 0},
-{fin = [(N 65),(N 72)], trans = 15},
-{fin = [(N 68)], trans = 0},
-{fin = [(N 40),(N 72)], trans = 0},
-{fin = [(N 70),(N 72)], trans = 18},
-{fin = [(N 43)], trans = 0},
+{fin = [(N 70),(N 72)], trans = 0},
+{fin = [(N 68),(N 72)], trans = 0},
+{fin = [(N 33),(N 72)], trans = 13},
+{fin = [(N 58)], trans = 0},
+{fin = [(N 38),(N 72)], trans = 15},
+{fin = [(N 41)], trans = 0},
+{fin = [(N 48),(N 72)], trans = 0},
+{fin = [(N 46),(N 72)], trans = 18},
+{fin = [(N 44)], trans = 0},
 {fin = [(N 15),(N 72)], trans = 20},
 {fin = [(N 15)], trans = 20},
-{fin = [(N 63),(N 72)], trans = 0},
-{fin = [(N 59),(N 72)], trans = 23},
-{fin = [(N 33)], trans = 0},
-{fin = [(N 38),(N 72)], trans = 0},
-{fin = [(N 57),(N 72)], trans = 0},
-{fin = [(N 61),(N 72)], trans = 0},
-{fin = [(N 22),(N 72)], trans = 0},
-{fin = [(N 20),(N 72)], trans = 29},
+{fin = [(N 31),(N 72)], trans = 0},
+{fin = [(N 27),(N 72)], trans = 23},
+{fin = [(N 53)], trans = 0},
+{fin = [(N 50),(N 72)], trans = 0},
+{fin = [(N 25),(N 72)], trans = 0},
+{fin = [(N 29),(N 72)], trans = 0},
+{fin = [(N 62),(N 72)], trans = 0},
+{fin = [(N 60),(N 72)], trans = 29},
 {fin = [(N 4)], trans = 0},
 {fin = [(N 72)], trans = 31},
-{fin = [(N 48)], trans = 0},
-{fin = [(N 45),(N 72)], trans = 33},
-{fin = [(N 55)], trans = 0},
+{fin = [(N 23)], trans = 0},
+{fin = [(N 20),(N 72)], trans = 33},
+{fin = [(N 36)], trans = 0},
 {fin = [(N 12),(N 72)], trans = 35},
 {fin = [(N 12)], trans = 35},
 {fin = [(N 1)], trans = 0},
@@ -317,31 +317,31 @@ let fun continue() = lex() in
 | 12 => (lex())
 | 15 => let val yytext=yymktext() in CINT(converterStringParaInteiro(yytext), yypos, yypos) end
 | 18 => let val yytext=yymktext() in obterPalavraReservada(yytext, yypos, yypos) end
-| 20 => (PARENTESESESQUERDO(yypos, yypos))
-| 22 => (PARENTESESDIREITO(yypos, yypos))
-| 24 => (CHAVEESQUERDA(yypos, yypos))
-| 26 => (CHAVEDIREITA(yypos, yypos))
-| 28 => (COLCHETEESQUERDO(yypos, yypos))
-| 30 => (COLCHETEDIREITO(yypos, yypos))
-| 33 => (SETA(yypos, yypos))
-| 36 => (SETADUPLA(yypos, yypos))
-| 38 => (VIRGULA(yypos, yypos))
+| 20 => (NEGACAO(yypos, yypos))
+| 23 => (E(yypos, yypos))
+| 25 => (SOMA(yypos, yypos))
+| 27 => (SUBTRACAO(yypos, yypos))
+| 29 => (MULTIPLICACAO(yypos, yypos))
+| 31 => (DIVISAO(yypos, yypos))
+| 33 => (IGUAL(yypos, yypos))
+| 36 => (DIFERENTE(yypos, yypos))
+| 38 => (MENOR(yypos, yypos))
 | 4 => (YYBEGIN COMMENTARY; lex())
-| 40 => (PONTOEVIRGULA(yypos, yypos))
-| 43 => (ADICIONAELEMENTOLISTA(yypos, yypos))
-| 45 => (NEGACAO(yypos, yypos))
-| 48 => (E(yypos, yypos))
-| 50 => (BARRA(yypos, yypos))
-| 52 => (IGUAL(yypos, yypos))
-| 55 => (DIFERENTE(yypos, yypos))
-| 57 => (SOMA(yypos, yypos))
-| 59 => (SUBTRACAO(yypos, yypos))
-| 61 => (MULTIPLICACAO(yypos, yypos))
-| 63 => (DIVISAO(yypos, yypos))
-| 65 => (MENOR(yypos, yypos))
-| 68 => (MENOROUIGUAL(yypos, yypos))
+| 41 => (MENOROUIGUAL(yypos, yypos))
+| 44 => (ADICIONAELEMENTOLISTA(yypos, yypos))
+| 46 => (DOISPONTOS(yypos, yypos))
+| 48 => (PONTOEVIRGULA(yypos, yypos))
+| 50 => (VIRGULA(yypos, yypos))
+| 53 => (SETA(yypos, yypos))
+| 55 => (BARRA(yypos, yypos))
+| 58 => (SETADUPLA(yypos, yypos))
+| 60 => (PARENTESESESQUERDO(yypos, yypos))
+| 62 => (PARENTESESDIREITO(yypos, yypos))
+| 64 => (CHAVEESQUERDA(yypos, yypos))
+| 66 => (CHAVEDIREITA(yypos, yypos))
+| 68 => (COLCHETEESQUERDO(yypos, yypos))
 | 7 => (YYBEGIN INITIAL; lex())
-| 70 => (DOISPONTOS(yypos, yypos))
+| 70 => (COLCHETEDIREITO(yypos, yypos))
 | 72 => let val yytext=yymktext() in error("\n***Erro no lexer***\n");
                 raise Fail("Erro no lexer" ^yytext) end
 | 9 => (lex())

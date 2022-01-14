@@ -6,10 +6,10 @@ val EOF:  'a * 'a -> (svalue,'a) token
 val FUNCAONORMAL:  'a * 'a -> (svalue,'a) token
 val CINT: (int) *  'a * 'a -> (svalue,'a) token
 val NOME: (string) *  'a * 'a -> (svalue,'a) token
-val COLCHETEDIREITO:  'a * 'a -> (svalue,'a) token
 val COLCHETEESQUERDO:  'a * 'a -> (svalue,'a) token
-val CHAVEDIREITA:  'a * 'a -> (svalue,'a) token
+val COLCHETEDIREITO:  'a * 'a -> (svalue,'a) token
 val CHAVEESQUERDA:  'a * 'a -> (svalue,'a) token
+val CHAVEDIREITA:  'a * 'a -> (svalue,'a) token
 val PARENTESESDIREITO:  'a * 'a -> (svalue,'a) token
 val PARENTESESESQUERDO:  'a * 'a -> (svalue,'a) token
 val FALSE:  'a * 'a -> (svalue,'a) token
