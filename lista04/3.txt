@@ -1,0 +1,10 @@
+a) valor_inicial: memória estática
+
+valor_intermediario: memória estática
+
+taxa: memória dinâmica
+
+valores: memória dinâmica
+
+b) A variável que define a lista, chamada valores, terá os seguintes elementos ao fim da execução:
+[25, 75, 15]

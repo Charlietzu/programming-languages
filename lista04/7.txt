@@ -1,0 +1,10 @@
+a) Podemos observar que na linha 1, a classe auto ptr recebe um tipo genérico, representando o polimorfismo
+paramétrico. Também na linha 6 e 7 é possível observar um override (sobrecarga) de operadores, onde o desenvolvedor
+pode definir a função que tais operadores irão executar ao serem chamados.
+
+b) A função abaixo não contém problema de memória, uma vez que o destrutor da classe auto_ptr executa a limpeza de memória.
+
+c) Neste caso também não ocorre problema de memória, pois o destrutor da classe auto_ptr faz a limpeza de memória.
+
+d) Neste caso já ocorre um problema de memória devido ao fato de que o ponteiro perde a referência ao executar o delete na
+linha 5.

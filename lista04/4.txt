@@ -1,0 +1,11 @@
+Reference Counting: Este método é ideal para sistemas de arquivos (como sistemas operacionais), onde a coleta de lixo 
+mantem uma contagem de referência para qualquer arquivo, e quando esta contagem atinge 0, o pedaço de memória que o 
+arquivo ocupa pode ser desalocado com segurança e com uma velocidade de acesso rápida.
+
+Mark and Sweep: Este método é ideal para sistemas que não terão sua memória desalocada com frequência, pois ele necessita
+que a execução do programa seja parada enquanto a coleta é realizada, um bom exemplo são sistemas de comércio físico,
+como sistemas de supermercado, onde normalmente a limpeza é realizada após a fechar a execução do dia.
+
+Stop and Copy: Ideal para programaas em que não há um grande registro de memória, pois todos os objetos que estão ativos serão
+copiados toda vez que a coleta for executada, necessitando de um grande espaço de memória. É bom para programas simples
+dentro de um espaço de memória grande.
