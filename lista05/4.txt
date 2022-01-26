@@ -1,0 +1,8 @@
+a) O contrato que deve ser garantido pelos objetos passados para este método é que ambos tenham sua implementação
+dos métodos isNotEmpty() e remove().
+
+b) Duck typing seria a aplicação do teste do pato, que fala o seguinte: "Se isso anda como um pato, e faz quack como um pato,
+então isso deve ser um pato". Trazendo mais específicamente para o mundo da computação, um objeto é de um determinado tipo
+se ele possui todos os métodos e propriedades requeridos por este determinado tipo. A relação com o método do enunciado em
+questão, é que não importa o tipo do objeto s, desde que ele tenha os métodos isNotEmpty() e remove() implementados, um 
+caso claro de duck typing.

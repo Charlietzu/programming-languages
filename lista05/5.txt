@@ -1,0 +1,11 @@
+Linha 1  - Será impresso: "Pavao is an animal"
+Linha 2  - Será impresso: "Tigre is a mammal"
+Linha 3  - Será impresso: "Krypto is a dog"
+Linha 4  - Será impresso: "Pavao, which is an animal, is eating"
+Linha 5  - Será impresso: "Tigre, which is a mammal, is sucking milk"
+Linha 6  - Será impresso: "Tigre, which is an animal, is eating"
+Linha 7  - Será impresso: "Krypto is barking rather loudly"
+Linha 8  - Será impresso: "Krypto, which is a mammal, is sucking milk"
+Linha 9  - Será impresso: "Krypto barks when it eats"
+Linha 10 - Um erro será disparado.
+Linha 11 - Será impresso: "Krypto is barking rather loudly"

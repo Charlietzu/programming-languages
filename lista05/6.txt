@@ -1,0 +1,5 @@
+O problema do diamante ocorre quando temos a seguinte situação. Temos duas classes B e C que herdam de A.
+Temos uma quarta classe que é a D, que herda tanto de B como de C. Suponto que B e C tenham o mesmo método
+implementado de formas diferentes, fazendo uma sobrecarga deste método de A, quando eu chamar este método através 
+da classe D, vou estar usando a implementação da classe B ou da classe C? Existem várias formas de se resolver este problema
+mas a forma que será utilizada também depende da tecnologia (linguagem) que se está utilizando.
