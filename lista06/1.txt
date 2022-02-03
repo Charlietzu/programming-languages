@@ -1,0 +1,6 @@
+a) O valor impresso pelo programa é 5.
+
+b) Neste caso, o valor impresso seria 7, pois, ao passar os parâmetros como referência, quando você chama a função p,
+ao chamar passando os argumentos (1,1), os valores obtidos para x, y e z serão de 2, 3 e 3, que somando, resulta em 7.
+Y e Z adquirem o valor de 3 pois o seu cálculo é realizado com base na referência de x, que no momento teria seu valor
+como 2.

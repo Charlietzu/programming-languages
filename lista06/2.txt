@@ -1,0 +1,11 @@
+a)
+
+int main (int argc, char ** argv )
+{
+    printf("sum = %d\n", (argc) + (argv [0][0]));
+}
+
+
+b) O problema da captura de variáveis em um contexto de expansão de macros ocorre quando alguma variável acaba se referindo
+a uma variável de outro contexto, no caso da questão, o problema ocorre devido ao conflito de nomes da variável "tmp" 
+passada como argumento e a declarada localmente na macro.

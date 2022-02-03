@@ -1,0 +1,3 @@
+a) O valor da variável Z é 30, pois calcula o somatório de i elevado a 2, sendo o intervalo de 1 a 4.
+
+b) Este programa irá realizar a somatória de 1/(i+a)^2, sendo que i vai estar no intervalo de 1 a 100.

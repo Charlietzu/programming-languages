@@ -1,0 +1,4 @@
+a) Nos casos em que você tem que passar uma variável que ocupe relativamente bastante memória como argumento para uma função,
+o ideal é você passar por referência, pois você permite que a função modifique este mesmo dado, sem ter que criar uma cópia.
+
+b) Os valores são armazenados na Stack Frame da pilha de execução.
