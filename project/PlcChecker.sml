@@ -1,4 +1,3 @@
-(* PlcChecker *)
 
 exception EmptySeq	
 exception UnknownType	
@@ -19,7 +18,7 @@ fun teval (ConI _) _ = IntT
     | teval (Var variavelEval) (env:plcType env) = lookup env variavelEval
     | teval (List listaEval) (env:plcType env) =
         let
-            fun verificarLista (cabeca::[]) = (teval listaEval env)::[]
+            fun verificarLista (cabeca::[]) = (teval cabeca env)::[]
                 | verificarLista (cabeca::calda) = (teval cabeca env)::verificarLista calda
                 | verificarLista _ = []
             val tipoLista = verificarLista listaEval
