@@ -5,7 +5,7 @@ use "testParser.sml";
 
 (*Testing PlcChecker Exceptions => Pass PLC code snippets that SHOULD throw exceptions from the PlcChecker through
 teval to check if the exception throwing of PlcChecker is actually working *)
-use "testChecker.sml";
+use "testPlcChecker.sml";
 
 (*Testing PlcInterp Exceptions => Pass PLC code snippets that SHOULD throw exceptions from the PlcInterp through
 eval to check if the exception throwing of PlcInterp is actually working *)

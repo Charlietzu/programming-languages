@@ -4,8 +4,8 @@ exception testError;
 let
     val teste = teval (fromString "x") [];
 in
-    print("Erro => SymbolNotFound não foi declarada!\n");
+    print("[ERRO] SymbolNotFound não foi declarada!\n");
     raise testError
-end handle SymbolNotFound => print ("APROVADO! => SymbolNotFound foi declarada com sucesso!\n");
+end handle SymbolNotFound => print ("[SUCESSO] SymbolNotFound foi declarada com sucesso!\n");
 
-print("Sucesso!\n");
+print("Testes de símbolos aprovados com sucesso!");

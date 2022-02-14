@@ -4,37 +4,37 @@ exception testError;
 let 
     val teste = eval (fromString "x = false") [("x", IntV 43)]
 in
-    print("Erro => Impossible deveria ser declarada!\n");
+    print("[ERRO] Impossible deveria ser declarada!\n");
     raise testError
-end handle Impossible => print ("Sucesso => Impossible foi declarada!\n");
+end handle Impossible => print ("[SUCESSO] Impossible foi declarada!\n");
 
 let 
     val teste = eval (fromString "hd ([Int] [])") []
 in
-    print("Erro => HDEmptySeq deveria ser declarada!\n");
+    print("[ERRO] HDEmptySeq deveria ser declarada!\n");
     raise testError
-end handle HDEmptySeq => print ("Sucesso => HDEmptySeq foi declarada!\n");
+end handle HDEmptySeq => print ("[SUCESSO] HDEmptySeq foi declarada!\n");
 
 let 
     val teste = eval (fromString "tl ([Bool] [])") []
 in
-    print("Erro => TLEmptySeq deveria ser declarada!\n");
+    print("[ERRO] TLEmptySeq deveria ser declarada!\n");
     raise testError
-end handle TLEmptySeq => print ("Sucesso => TLEmptySeq foi declarada!\n");
+end handle TLEmptySeq => print ("[SUCESSO] TLEmptySeq foi declarada!\n");
 
 let 
     val teste = eval (fromString "match x with | true -> 1 end") [("x", BoolV false)]
 in
-    print("Erro => ValueNotFoundInMatch deveria ser declarada!\n");
+    print("[ERRO] ValueNotFoundInMatch deveria ser declarada!\n");
     raise testError
-end handle ValueNotFoundInMatch => print ("Sucesso => ValueNotFoundInMatch foi declarada!\n");
+end handle ValueNotFoundInMatch => print ("[SUCESSO] ValueNotFoundInMatch foi declarada!\n");
 
 let 
     val teste = eval (fromString "var x = false; x(false)") []
 in
-    print("Erro => NotAFunc deveria ser declarada!\n");
+    print("[ERRO] NotAFunc deveria ser declarada!\n");
     raise testError
-end handle NotAFunc => print ("Sucesso => NotAFunc foi declarada!\n");
+end handle NotAFunc => print ("[SUCESSO] NotAFunc foi declarada!\n");
 
 
-print("SUCCESS!\n")
+print("Testes do PlcInterp aprovados com sucesso\n")
