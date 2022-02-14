@@ -2,39 +2,39 @@ use "Plc.sml";
 exception testError;
 
 let 
-    val test = eval (fromString "x = false") [("x", IntV 123)]
+    val teste = eval (fromString "x = false") [("x", IntV 43)]
 in
-    print("ERROR => Impossible were supposed to be raised\n");
+    print("Erro => Impossible deveria ser declarada!\n");
     raise testError
-end handle Impossible => print ("PASSED => Impossible were succesfully raised\n");
+end handle Impossible => print ("Sucesso => Impossible foi declarada!\n");
 
 let 
-    val test = eval (fromString "hd ([Bool] [])") []
+    val teste = eval (fromString "hd ([Int] [])") []
 in
-    print("ERROR => HDEmptySeq were supposed to be raised\n");
+    print("Erro => HDEmptySeq deveria ser declarada!\n");
     raise testError
-end handle HDEmptySeq => print ("PASSED => HDEmptySeq were succesfully raised\n");
+end handle HDEmptySeq => print ("Sucesso => HDEmptySeq foi declarada!\n");
 
 let 
-    val test = eval (fromString "tl ([Bool] [])") []
+    val teste = eval (fromString "tl ([Bool] [])") []
 in
-    print("ERROR => TLEmptySeq were supposed to be raised\n");
+    print("Erro => TLEmptySeq deveria ser declarada!\n");
     raise testError
-end handle TLEmptySeq => print ("PASSED => TLEmptySeq were succesfully raised\n");
+end handle TLEmptySeq => print ("Sucesso => TLEmptySeq foi declarada!\n");
 
 let 
-    val test = eval (fromString "match x with | true -> 1 end") [("x", BoolV false)]
+    val teste = eval (fromString "match x with | true -> 1 end") [("x", BoolV false)]
 in
-    print("ERROR => ValueNotFoundInMatch were supposed to be raised\n");
+    print("Erro => ValueNotFoundInMatch deveria ser declarada!\n");
     raise testError
-end handle ValueNotFoundInMatch => print ("PASSED => ValueNotFoundInMatch were succesfully raised\n");
+end handle ValueNotFoundInMatch => print ("Sucesso => ValueNotFoundInMatch foi declarada!\n");
 
 let 
-    val test = eval (fromString "var x = false; x(false)") []
+    val teste = eval (fromString "var x = false; x(false)") []
 in
-    print("ERROR => NotAFunc were supposed to be raised\n");
+    print("Erro => NotAFunc deveria ser declarada!\n");
     raise testError
-end handle NotAFunc => print ("PASSED => NotAFunc were succesfully raised\n");
+end handle NotAFunc => print ("Sucesso => NotAFunc foi declarada!\n");
 
 
 print("SUCCESS!\n")

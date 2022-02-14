@@ -2,10 +2,10 @@ use "Plc.sml";
 exception testError;
 
 let
-    val test = teval (fromString "x") [];
+    val teste = teval (fromString "x") [];
 in
-    print("ERROR => SymbolNotFound were supposed to be raised\n");
+    print("Erro => SymbolNotFound não foi declarada!\n");
     raise testError
-end handle SymbolNotFound => print ("PASSED => SymbolNotFound were succesfully raised\n");
+end handle SymbolNotFound => print ("APROVADO! => SymbolNotFound foi declarada com sucesso!\n");
 
-print("SUCCESS\n");
+print("Sucesso!\n");
