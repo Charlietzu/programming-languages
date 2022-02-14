@@ -12,6 +12,6 @@ m2.i = 4
 
 d) O tipo de passagem adotado para tipos primitivos no Java é a passagem por valor.
 
-d) O tipo de passagem adotado para objetos no Java é a passagem por valor, porém, mesmo que a passagem seja por valor
+e) O tipo de passagem adotado para objetos no Java é a passagem por valor, porém, mesmo que a passagem seja por valor
 as variáveis de objeto são referências que apontam para os objetos reais, logo, caso você faça alguma alteração em um
 objeto passado por argumento, o objeto fora da função também será alterado.
